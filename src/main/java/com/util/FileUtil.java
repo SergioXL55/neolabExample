@@ -3,6 +3,7 @@ package com.util;
 import com.animal.Animal;
 import com.rules.Rule;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class FileUtil {
+
+    final static Logger logger = Logger.getLogger(FileUtil.class);
 
     private final static String BASE_DIR = System.getProperty("user.dir");
     public final static String DEFAULT_ANIMALS_FILE_NAME = BASE_DIR + "/src/main/resources/incoming/animals/animals";
@@ -26,7 +29,7 @@ public abstract class FileUtil {
                 animals.add(animal);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Failed to load file with animals:" + e.getMessage());
         }
         return animals;
     }
@@ -39,7 +42,7 @@ public abstract class FileUtil {
                 rules.add(rule);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Failed to load rules file:" + e.getMessage());
         }
         return rules;
     }
