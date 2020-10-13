@@ -32,11 +32,26 @@ class FileUtilTest {
     }
 
     @DisplayName("Try to load data from empty files")
-    @ParameterizedTest
-    @ValueSource(strings = {"emptyFile", "emptyFileOne", "emptyFileTwo"})
-    void loadFromEmptyFile(String source) {
+    @Test
+    void loadFromEmptyFile() {
         try {
-            String fileName = File.createTempFile(source, "").getAbsolutePath();
+            String fileName = File.createTempFile("tempFile", "").getAbsolutePath();
+            List<Animal> animals = FileUtil.loadAnimalsFromFile(fileName);
+            assertNotNull(animals);
+            assertEquals(0, animals.size());
+            List<Rule> rules = FileUtil.loadRulesFromFile(fileName);
+            assertNotNull(rules);
+            assertEquals(0, rules.size());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @DisplayName("Try to load data from non-existing files")
+    @ParameterizedTest
+    @ValueSource(strings = {"File", "FileOne", "FileTwo"})
+    void tryToLoadFromNonExistingFile(String fileName) {
+        try {
             List<Animal> animals = FileUtil.loadAnimalsFromFile(fileName);
             assertNotNull(animals);
             assertEquals(0, animals.size());
