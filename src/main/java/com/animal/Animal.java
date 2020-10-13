@@ -1,16 +1,14 @@
 package com.animal;
 
-import java.util.List;
-
 public class Animal {
 
-    private final List<String> animalProperties;
+    private final String[] animalProperties;
 
-    public Animal(List<String> animalProperties) {
+    public Animal(String... animalProperties) {
         this.animalProperties = animalProperties;
     }
 
-    public List<String> getAnimalProperties() {
+    public String[] getAnimalProperties() {
         return animalProperties;
     }
 }

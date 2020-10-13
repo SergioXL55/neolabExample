@@ -9,7 +9,7 @@ import com.util.FileUtil;
 
 import java.util.List;
 
-public class WantedAnimal implements TrackingService {
+public class AnimalTracking implements TrackingService {
 
     private final List<Animal> animals = FileUtil.loadAnimalsFromFile(FileUtil.DEFAULT_ANIMALS_FILE_NAME);
     private final List<Rule> rules = FileUtil.loadRulesFromFile(FileUtil.DEFAULT_RULE_FILE_NAME);
