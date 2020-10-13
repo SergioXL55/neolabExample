@@ -15,9 +15,8 @@ public abstract class FileUtil {
 
     final static Logger logger = Logger.getLogger(FileUtil.class);
 
-    private final static String BASE_DIR = System.getProperty("user.dir");
-    public final static String DEFAULT_ANIMALS_FILE_NAME = BASE_DIR + "/src/main/resources/incoming/animals/animals";
-    public final static String DEFAULT_RULE_FILE_NAME = BASE_DIR + "/src/main/resources/incoming/rules/rules";
+    public final static String DEFAULT_ANIMALS_FILE_NAME = PropertiesLoader.getProperties().getProperty("app.files.animals");
+    public final static String DEFAULT_RULE_FILE_NAME = PropertiesLoader.getProperties().getProperty("app.files.rules");
     private final static String SPLIT = ";";
     private final static String SPLIT_VARIABLES = ",";
 

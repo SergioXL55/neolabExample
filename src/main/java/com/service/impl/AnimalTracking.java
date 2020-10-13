@@ -1,8 +1,7 @@
 package com.service.impl;
 
 import com.animal.Animal;
-import com.exception.AnimalCriteriaError;
-import com.exception.AnimalNotFoundException;
+import com.exception.InvalidRuleOrAnimalException;
 import com.rules.Rule;
 import com.service.TrackingService;
 import com.util.FileUtil;
@@ -18,7 +17,7 @@ public class AnimalTracking implements TrackingService {
     private final String result = "";
 
     @Override
-    public void calculateAnimalsCount() throws AnimalCriteriaError, AnimalNotFoundException {
+    public void calculateAnimalsCount() throws InvalidRuleOrAnimalException {
 
     }
 

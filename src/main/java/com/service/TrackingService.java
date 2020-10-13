@@ -1,11 +1,10 @@
 package com.service;
 
-import com.exception.AnimalCriteriaError;
-import com.exception.AnimalNotFoundException;
+import com.exception.InvalidRuleOrAnimalException;
 
 public interface TrackingService {
 
-    void calculateAnimalsCount() throws AnimalCriteriaError, AnimalNotFoundException;
+    void calculateAnimalsCount() throws InvalidRuleOrAnimalException;
 
     String getAnimalCountResult();
 
