@@ -4,7 +4,7 @@ import com.exception.InvalidRuleOrAnimalException;
 
 public interface TrackingService {
 
-    void calculateAnimalsCount() throws InvalidRuleOrAnimalException;
+    void calculateAnimalsCount() ;
 
     String getAnimalCountResult();
 

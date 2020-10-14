@@ -1,4 +1,4 @@
-package com.rules;
+package com.models.rules;
 
 import java.util.List;
 
@@ -14,7 +14,4 @@ public class Rule {
         return rules;
     }
 
-    public void setRules(List<String[]> rules) {
-        this.rules = rules;
-    }
 }

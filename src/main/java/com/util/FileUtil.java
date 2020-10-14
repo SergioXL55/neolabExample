@@ -1,7 +1,7 @@
 package com.util;
 
-import com.animal.Animal;
-import com.rules.Rule;
+import com.models.animal.Animal;
+import com.models.rules.Rule;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -15,8 +15,8 @@ public abstract class FileUtil {
 
     final static Logger logger = Logger.getLogger(FileUtil.class);
 
-    public final static String DEFAULT_ANIMALS_FILE_NAME = PropertiesLoader.getProperties().getProperty("app.files.animals");
-    public final static String DEFAULT_RULE_FILE_NAME = PropertiesLoader.getProperties().getProperty("app.files.rules");
+    public final static String DEFAULT_ANIMALS_FILE_NAME = StringUtils.defaultString(PropertiesLoader.getProperties().getProperty("app.files.animals"));
+    public final static String DEFAULT_RULE_FILE_NAME = StringUtils.defaultString(PropertiesLoader.getProperties().getProperty("app.files.rules"));
     private final static String SPLIT = ";";
     private final static String SPLIT_VARIABLES = ",";
 
@@ -24,8 +24,11 @@ public abstract class FileUtil {
         List<Animal> animals = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             while (bufferedReader.ready()) {
-                Animal animal = extractAnimalFromText(bufferedReader.readLine());
-                animals.add(animal);
+                String inputText = bufferedReader.readLine();
+                if (StringUtils.isNotBlank(inputText)) {
+                    Animal animal = extractAnimalFromText(inputText);
+                    animals.add(animal);
+                }
             }
         } catch (IOException e) {
             logger.error("Failed to load file with animals:" + e.getMessage());
@@ -37,8 +40,11 @@ public abstract class FileUtil {
         List<Rule> rules = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             while (bufferedReader.ready()) {
-                Rule rule = extractRuleFromText(bufferedReader.readLine());
-                rules.add(rule);
+                String inputText = bufferedReader.readLine();
+                if (StringUtils.isNotBlank(inputText)) {
+                    Rule rule = extractRuleFromText(inputText);
+                    rules.add(rule);
+                }
             }
         } catch (IOException e) {
             logger.error("Failed to load rules file:" + e.getMessage());

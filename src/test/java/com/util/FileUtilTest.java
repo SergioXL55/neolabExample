@@ -1,7 +1,7 @@
 package com.util;
 
-import com.animal.Animal;
-import com.rules.Rule;
+import com.models.animal.Animal;
+import com.models.rules.Rule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

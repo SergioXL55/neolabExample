@@ -7,10 +7,12 @@
     <groupId>org.example</groupId>
     <artifactId>neolabExample</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <Maven>3.8.1</Maven>
         <Junit>5.6.2</Junit>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <profiles>
@@ -27,6 +29,24 @@
                             <source>11</source>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.19.1</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.junit.platform</groupId>
+                                <artifactId>junit-platform-surefire-provider</artifactId>
+                                <version>1.0.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.junit.jupiter</groupId>
+                                <artifactId>junit-jupiter-engine</artifactId>
+                                <version>${Junit}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+
                 </plugins>
             </build>
             <dependencies>
@@ -44,6 +64,12 @@
                     <groupId>commons-lang</groupId>
                     <artifactId>commons-lang</artifactId>
                     <version>2.5</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                    <version>${Junit}</version>
+                    <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.junit.jupiter</groupId>

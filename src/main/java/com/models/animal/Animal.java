@@ -1,4 +1,4 @@
-package com.animal;
+package com.models.animal;
 
 public class Animal {
 
